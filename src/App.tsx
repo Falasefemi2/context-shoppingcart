@@ -1,10 +1,12 @@
-import React from 'react'
+import Header from "./components/Header"
+import Products from "./components/Products"
 
-type Props = {}
-
-const App = (props: Props) => {
+const App = () => {
   return (
-    <div>App</div>
+    <div className="max-w-5xl mx-auto">
+      <Header />
+      <Products />
+    </div>
   )
 }
 
