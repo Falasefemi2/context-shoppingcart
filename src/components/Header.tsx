@@ -1,6 +1,7 @@
 import { BsFillBagPlusFill } from "react-icons/bs"
 
 const Header = (): JSX.Element => {
+    
     return (
         <div className="flex justify-between items-center p-4">
             <div className=" font-bold text-yellow-400 text-lg">FEMISTORE</div>
