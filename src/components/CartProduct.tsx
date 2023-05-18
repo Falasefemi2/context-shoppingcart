@@ -25,8 +25,6 @@ const CartProduct = ({ image, title, price, description, id }: Product) => {
         cartDispatch({ type: 'DELETE_FROM_CART', payload: id });
         cartDispatch({ type: 'UPDATE_TOTAL_COST' });
       };
-
-      console.log(handleAddToCart);
       
 
     return (

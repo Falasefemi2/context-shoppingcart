@@ -16,6 +16,7 @@ type CartState = {
 type CartAction =
   | { type: 'ADD_TO_CART'; payload: Product }
   | { type: 'DELETE_FROM_CART'; payload: number }
+  | { type: 'UPDATE_QUANTITY'; payload: { productId: number, quantity: number } }
   | { type: 'UPDATE_TOTAL_COST' };
 
 // Create the cart context
@@ -24,7 +25,7 @@ const CartContext = createContext<{
   cartDispatch: React.Dispatch<CartAction>;
 }>({
   cartState: { cartItems: [], totalCost: 0 },
-  cartDispatch: () => {},
+  cartDispatch: () => { },
 });
 
 // Define the cart reducer
@@ -51,6 +52,21 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
           ...state.cartItems,
           { product: action.payload, quantity: 1 },
         ],
+      };
+    }
+
+    case 'UPDATE_QUANTITY': {
+      const { productId, quantity } = action.payload;
+      const updatedCartItems = state.cartItems.map(item => {
+        if (item.product.id === productId) {
+          return { ...item, quantity };
+        }
+        return item;
+      });
+
+      return {
+        ...state,
+        cartItems: updatedCartItems,
       };
     }
 
