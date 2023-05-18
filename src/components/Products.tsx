@@ -5,6 +5,7 @@ import { Product } from '../common/type';
 
 
 const Products = () => {
+    
     const getProducts = async (): Promise<Product[]> => {
         const response = await axios.get<Product[]>('https://fakestoreapi.com/products');
         return response.data;

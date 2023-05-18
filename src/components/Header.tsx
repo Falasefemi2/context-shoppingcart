@@ -28,7 +28,7 @@ const Header = () => {
       </div>
       <div onClick={handleClick}>
         {toggle ? (
-          <div className="relative z-[99] cursor-pointer">
+          <div className="relative z-[99] cursor-pointer top-[-10px] left-[150px]">
             <GrClose size={30} />
           </div>
         ) : (

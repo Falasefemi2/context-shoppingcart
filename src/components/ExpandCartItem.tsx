@@ -4,6 +4,7 @@ import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
 const ExpandCartItem = () => {
   const { cartState, cartDispatch } = useCart();
+  
 
   const handleIncreaseQuantity = (productId: number) => {
     cartDispatch({ type: 'UPDATE_QUANTITY', payload: { productId, quantity: 1 } });
@@ -15,9 +16,6 @@ const ExpandCartItem = () => {
 
   return (
     <div className="fixed right-0 bottom-0 z-40 h-full w-[300px] bg-white shadow-xl p-4">
-      {/* Content for the expanded section */}
-      <h2 className="text-xl font-bold mb-4">Total Cost: {formatCurrency(cartState.totalCost)}</h2>
-
       <div>
         <h3 className="text-lg font-bold mb-2">Cart Items:</h3>
         {cartState.cartItems.map((cartItem) => (
@@ -45,9 +43,9 @@ const ExpandCartItem = () => {
           </div>
         ))}
       </div>
+      <h2 className="text-xl font-bold mb-4">Total Cost: {formatCurrency(cartState.totalCost)}</h2>
     </div>
   );
 };
 
 export default ExpandCartItem;
-
