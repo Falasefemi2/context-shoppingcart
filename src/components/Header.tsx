@@ -1,19 +1,23 @@
-import { BsFillBagPlusFill } from "react-icons/bs"
+import { useState } from "react"
+import { BsChevronContract, BsFillBagPlusFill } from "react-icons/bs"
+import ExpandCartItem from "./ExpandCartItem";
 
-const Header = (): JSX.Element => {
-    
+const Header = () => {
+    const [toggle, setToggle] = useState<boolean>(false);
+
+    const handleClick = () => {
+        setToggle(prev => !prev)
+    }
+
     return (
-        <div className="flex justify-between items-center p-4">
-            <div className=" font-bold text-yellow-400 text-lg">FEMISTORE</div>
-            <div className="relative">
-                <div className="absolute -top-1 -right-2 w-6 h-6 rounded-full bg-red-500 flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">0</span>
-                </div>
-                <div className="mt-4">
-                    <BsFillBagPlusFill size={25} />
-                </div>
+        <div className="flex items-center justify-between p-4">
+            <div className=" text-2xl font-extrabold text-yellow-300 items-start">
+                FEMI'STORE
             </div>
-
+            <div onClick={handleClick}>
+                {toggle ? <BsChevronContract size={30} /> : <BsFillBagPlusFill size={30} /> }
+                {toggle && <ExpandCartItem />}
+            </div>
         </div>
     )
 }
