@@ -55,11 +55,17 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
       };
     }
 
+   
     case 'UPDATE_QUANTITY': {
       const { productId, quantity } = action.payload;
-      const updatedCartItems = state.cartItems.map(item => {
+      const updatedCartItems = state.cartItems.map((item) => {
         if (item.product.id === productId) {
-          return { ...item, quantity };
+          const updatedQuantity = item.quantity + quantity;
+
+          // Ensure quantity is not negative
+          const newQuantity = updatedQuantity < 0 ? 0 : updatedQuantity;
+
+          return { ...item, quantity: newQuantity };
         }
         return item;
       });
@@ -69,6 +75,7 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
         cartItems: updatedCartItems,
       };
     }
+    
 
     case 'DELETE_FROM_CART': {
       const updatedCartItems = state.cartItems.filter(

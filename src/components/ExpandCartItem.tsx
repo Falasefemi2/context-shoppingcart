@@ -4,15 +4,16 @@ import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
 const ExpandCartItem = () => {
   const { cartState, cartDispatch } = useCart();
-  
 
-  const handleIncreaseQuantity = (productId: number) => {
-    cartDispatch({ type: 'UPDATE_QUANTITY', payload: { productId, quantity: 1 } });
-  };
+const handleIncreaseQuantity = (productId: number) => {
+  cartDispatch({ type: 'UPDATE_QUANTITY', payload: { productId, quantity: 1 } });
+};
 
-  const handleDecreaseQuantity = (productId: number) => {
-    cartDispatch({ type: 'UPDATE_QUANTITY', payload: { productId, quantity: -1 } });
-  };
+
+const handleDecreaseQuantity = (productId: number) => {
+  cartDispatch({ type: 'UPDATE_QUANTITY', payload: { productId, quantity: -1 } });
+};
+
 
   return (
     <div className="fixed right-0 bottom-0 z-40 h-full w-[300px] bg-white shadow-xl p-4">
